@@ -1,0 +1,78 @@
+<div class="search-container">
+  <form (submit)="onSubmit()">
+    <input type="text" placeholder="Search City" name="cityName" [(ngModel)]="cityName">
+    <button class="submit-btn" type="submit">Search</button>
+  </form>
+</div>
+<div class="container" *ngIf="weatherData">
+  <div class="img-container">
+    <img src="../assets/images/sun.jpg" alt="sunny" *ngIf="weatherData['main'].temp > 15">
+    <img src="../assets/images/rain.jpg" alt="rainy" *ngIf="weatherData['main'].temp <= 15">
+    <div class="city-temperature">
+      <h1>{{weatherData['name']}}</h1>
+      <h2>{{weatherData['main'].temp | number: "1.0-0"}}°C</h2>
+    </div>
+  </div>
+  
+  <div class="data-container">
+    <h1 style="padding-left: 10px;">More Information</h1>
+    <div class="info-data">
+      <div class="min-container">
+        <img src="../assets/images/low-temperature.png" alt="minimum temperature">
+        
+        <span>{{weatherData['main'].temp_min | number: "1.0-0"}}°C</span>
+        <div>min</div>
+      </div>
+      <div class="max-container">
+        <img src="../assets/images/high-temperature.png" alt="maximum temperature">
+        <span>{{weatherData['main'].temp_max | number: "1.0-0"}}°C</span>
+        <div>max</div>
+      </div>
+      <div class="hum-container">
+        <img src="../assets/images/drop.png" alt="humidity">
+        <span>{{weatherData['main'].humidity | number: "1.0-0"}}%</span>
+        <div>humidity</div>
+      </div>
+      <div class="wind-container">
+        <img src="../assets/images/wind(1).png" alt="wind">
+        <span>{{weatherData['wind'].speed  | number: "1.0-0"}} km/h</span>
+        <div>wind</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="container">
+  <div class="img-container">
+    <img src="../assets/images/sun.jpg" alt="sunny" *ngIf="1">
+    <img src="../assets/images/rain.jpg" alt="rainy" *ngIf="">
+    <div class="city-temperature">
+      <h1>City</h1>
+      <h2>{{14.4 | number: "1.0-0"}}°C</h2>
+    </div>
+  </div>
+  
+  <div class="data-container">
+    <h1>More Information</h1>
+    <div class="info-data">
+      <div class="min-container">
+        <img src="../assets/images/low-temperature.png" alt="minimum temperature">
+        <span>min</span>
+      </div>
+      <div class="max-container">
+        <img src="../assets/images/high-temperature.png" alt="maximum temperature">
+        <span>max</span>
+      </div>
+      <div class="hum-container">
+        <img src="../assets/images/drop.png" alt="humidity">
+        <span>hum</span>
+      </div>
+      <div class="wind-container">
+        <img src="../assets/images/wind(1).png" alt="wind">
+        <span>wind</span>
+      </div>
+    </div>
+  </div>
+</div> -->
+<router-outlet></router-outlet>
